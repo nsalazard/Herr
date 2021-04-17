@@ -14,7 +14,7 @@
 *****************************************************************************/
 # include <stdio.h>
 # include <stdlib.h>
-# include "papi.h"
+# include <papi>
 int your_slow_code();
 int main()
 {

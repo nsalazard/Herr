@@ -1,5 +1,5 @@
 #include <omp.h>
-#include <cstdio.h>
+#include <cstdio>
 
 int main(int argc, char *argv[]) {
 

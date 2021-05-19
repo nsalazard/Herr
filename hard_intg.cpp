@@ -30,7 +30,6 @@ std::vector<double> sum;
 
 	for(int ii = imin; ii < imax; ++ii){
 			double x = XMIN + ii*DX;
-			//No podemos sumar con una sola variable porque al tener tantos threads va a ver un race conditions
 			sum[tid] += fun(x);
 	}
 	sum[tid]*= DX;
@@ -39,6 +38,5 @@ std::cout << std::accumulate(sum.begin(),sum.end(), 0.0) << "\n";
 }
 
 double fun(double x){
-
     return x*x;
 }

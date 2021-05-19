@@ -5,7 +5,7 @@
 #include <numeric>
 
 const double XMIN = 0.0;
-const double XMAX = 10.0;
+const double XMAX = 100.0;
 const int N = 100000000;
 const double DX = (XMAX-XMIN)/N;
 

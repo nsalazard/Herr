@@ -36,13 +36,13 @@ int main(int argc, char **argv)
 	}
 double tend = MPI_Wtime();
 std::printf("Time from pid %d: %lf \n", pid, tend-tstart);
-	//std::printf("The area from %lf to %lf is: %le \n", xmin + (imin*width),xmin + (imin*nrect)*width, area);
+	std::printf("The area from %lf to %lf is: %le \n", xmin + (imin*width),xmin + (imin*nrect)*width, area);
 
 	int tag = 0;
 	if(0 ==pid){
 		double total = area;
 		for(int src = 0; src < np; ++src){
-		MPI_Recv(&area,src,MPI_DOUBLE,1,tag,MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+		MPI_Recv(&area,1,MPI_DOUBLE,src,tag,MPI_COMM_WORLD, MPI_STATUS_IGNORE);
 		total += area;}
 		std::printf ("El area total es %f \n", total);
 	}

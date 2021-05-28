@@ -41,7 +41,7 @@ std::printf("Time from pid %d: %lf \n", pid, tend-tstart);
 	int tag = 0;
 	if(0 ==pid){
 		double total = area;
-		for(int src = 0; src < np; ++src){
+		for(int src = 1; src < np; ++src){
 		MPI_Recv(&area,1,MPI_DOUBLE,src,tag,MPI_COMM_WORLD, MPI_STATUS_IGNORE);
 		total += area;}
 		std::printf ("El area total es %f \n", total);

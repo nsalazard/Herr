@@ -1,7 +1,7 @@
 #include <cstdio>
 #include "mpi.h"
 
-double fun (double x){
+double f (double x){
 	return x*x;
 }
 

@@ -23,7 +23,7 @@ int main(int argc, char **argv)
   int Nc = samples(N, pid, np);
   double t1 = MPI_Wtime();
   std::cout << "TIME: " << t1-t0 << std::endl;
-  
+  MPI_Barrier (MPI_COMM_WORLD);
   pi(N, Nc, pid, np);
   
   MPI_Finalize(); /* Mandatory */

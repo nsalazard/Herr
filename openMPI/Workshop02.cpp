@@ -37,12 +37,12 @@ void pi(int N, int Nc, int pid, int np)
   if (pid != 0) {
     // enviar Nc a pid 0
     int dest = 0;
-    MPI_Send(&Nc, 1, MPI_DOUBLE, dest, tag, MPI_COMM_WORLD);
+    MPI_Send(&Nc, 1, MPI_INT, dest, tag, MPI_COMM_WORLD);
   } else { // pid ==0
     // recibir de pid 1, 2, 3, 4, 5, ... , np-1
     double total = Nc;
     for (int ipid = 1; ipid < np; ++ipid) {
-      MPI_Recv(&Nc, 1, MPI_DOUBLE, ipid, tag, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+      MPI_Recv(&Nc, 1, MPI_INT, ipid, tag, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
       total += Nc;
     }
     // imprimir

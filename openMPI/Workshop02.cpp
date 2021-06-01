@@ -45,7 +45,7 @@ void pi(int N, int Nc, int pid, int np)
     }
     // imprimir
     total = 4*total/N; 
-    std::cout << "El valor de Pi es: " << total << " usando " << N << " procesos " <<std::endl;
+    std::cout << "El valor de Pi es: " << total << " usando " << np << " procesos " <<std::endl;
   }
 }
 int samples(int N, int pid, int np)

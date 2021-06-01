@@ -8,8 +8,8 @@ int samples(int N, int pid, int np);
 
 int main(int argc, char **argv)
 {
-  std::cout.precision(15);
-  std::cout.setf(std::ios::scientific);
+  //std::cout.precision(15);
+  //std::cout.setf(std::ios::scientific);
 
   MPI_Init(&argc, &argv); /* Mandatory */
 

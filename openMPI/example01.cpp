@@ -15,7 +15,7 @@ int main(int argc, char **argv)
   
   double Nc = 0;
   int tag = 0;
-  while (Nc <= N){
+  while (Nc < N){
   if (pid != 0) {
     // enviar Nc a pid 
     MPI_Send(&Nc, 1, MPI_INT, 0, tag, MPI_COMM_WORLD);

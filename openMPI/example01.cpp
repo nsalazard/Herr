@@ -18,13 +18,13 @@ int main(int argc, char **argv)
   while (Nc < N){
   if (pid == 0) {
     // enviar Nc a pid 
-      MPI_Recv(&Nc, 1, MPI_INT, 1, 1, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-      Nc += 1;
-      MPI_Send(&Nc, 1, MPI_INT, 1, 2, MPI_COMM_WORLD);
+      MPI_Send(&Nc, 1, MPI_INT, 0, 1, MPI_COMM_WORLD);
+    MPI_Recv(&Nc, 1, MPI_INT, 0, 2, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
   } else { // pid ==0
     // recibir de pid 1, 2, 3, 4, 5, ... , np-1
-    MPI_Send(&Nc, 1, MPI_INT, 0, 1, MPI_COMM_WORLD);
-    MPI_Recv(&Nc, 1, MPI_INT, 0, 2, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+    MPI_Recv(&Nc, 1, MPI_INT, 1, 1, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+      Nc += 1;
+      MPI_Send(&Nc, 1, MPI_INT, 1, 2, MPI_COMM_WORLD);
       
     // imprimir
   }

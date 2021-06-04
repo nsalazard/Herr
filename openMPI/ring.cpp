@@ -25,8 +25,8 @@ int main(int argc, char **argv)
     }
 
      if (0 == pid) {
-       std::cout << "El valor teórico (N-1)*N/2 = " << (N-1)*N/2 << std::endl;
        std::cout << "El valor del programa = " << N << std::endl;
+       std::cout << "El valor teórico (np-1)*np/2 = " << (np-1)*np/2 << std::endl;
      }
      
   

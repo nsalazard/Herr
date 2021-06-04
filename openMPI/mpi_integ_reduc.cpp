@@ -41,7 +41,7 @@ std::printf("Time from pid %d: %lf \n", pid, tend-tstart);
 int total = 0;
 MPI_Reduce(&area,&total,1,MPI_DOUBLE,MPI_SUM,0,MPI_COMM_WORLD);
 if(0 ==pid){
-  std::printf ("El area total es %f \n", total);
+  std::printf ("El area total es %lf \n", total);
   }
 
  MPI_Finalize(); /* Mandatory */

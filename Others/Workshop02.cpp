@@ -17,7 +17,7 @@ int main(int argc, char **argv)
   int np;                 /* number of processes */
   MPI_Comm_size(MPI_COMM_WORLD, &np);
   MPI_Comm_rank(MPI_COMM_WORLD, &pid);
-  int N = std::atoi(argv[1]);;
+  int N = std::atoi(argv[1]);
   double t0 = MPI_Wtime();
   int Nc = samples(N, pid, np);
   double t1 = MPI_Wtime();

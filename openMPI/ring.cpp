@@ -20,7 +20,7 @@ int main(int argc, char **argv)
       MPI_Recv(&N, 1, MPI_INT, src, tag, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
     } else {
       MPI_Recv(&N, 1, MPI_INT, src, tag, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-      N++;
+      N+=pid;
       MPI_Send(&N, 1, MPI_INT, dest, tag, MPI_COMM_WORLD);
     }
 

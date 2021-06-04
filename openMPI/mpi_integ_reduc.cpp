@@ -38,7 +38,7 @@ double tend = MPI_Wtime();
 std::printf("Time from pid %d: %lf \n", pid, tend-tstart);
 //std::printf("The area from %lf to %lf is: %le \n", xmin + (imin*width),xmin + (imin*nrect)*width, area);
 
-int total = 0;
+double total = 0.0;
 MPI_Reduce(&area,&total,1,MPI_DOUBLE,MPI_SUM,0,MPI_COMM_WORLD);
 if(0 ==pid){
   std::printf ("El area total es %lf \n", total);

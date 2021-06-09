@@ -14,11 +14,11 @@ int main(int argc, char **argv)
   const int N = std::atoi(argv[1]);
   const int NTH = std::atoi(argv[2]);
   double * data = new double [N]; 
-
-  auto start = std::chrono::steady_clock::now();
+  
   // fill the array
+  //auto start = std::chrono::steady_clock::now();
   fill(data, N, NTH);
-  auto end = std::chrono::steady_clock::now();
+  //auto end = std::chrono::steady_clock::now();
   //print_elapsed(start, end);
 
   // get the average
@@ -29,7 +29,7 @@ int main(int argc, char **argv)
 
   // print
   // std::cout << data[N/2] << std::endl;
-  std::cout << avg << std::endl;
+  std::cout << "Average: " << avg << std::endl;
   
   delete [] data;
   return 0;

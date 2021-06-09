@@ -22,9 +22,9 @@ int main(int argc, char **argv)
   //print_elapsed(start, end);
 
   // get the average
-  start = std::chrono::steady_clock::now();
+  auto start = std::chrono::steady_clock::now();
   double avg = average(data, N, NTH);
-  end = std::chrono::steady_clock::now();
+  auto end = std::chrono::steady_clock::now();
   print_elapsed(start, end);
 
   // print

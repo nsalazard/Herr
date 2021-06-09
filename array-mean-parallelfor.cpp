@@ -14,8 +14,8 @@ void comm(int N, int Nc, int pid, int np);
 
 int main(int argc, char **argv)
 {
-  const int N = std::atoi(argv[1]);
-  const int NTH = std::atoi(argv[2]);
+  int N = std::atoi(argv[1]);
+  int NTH = std::atoi(argv[2]);
   double * data = new double [N]; 
   
   // fill the array
@@ -31,8 +31,6 @@ int main(int argc, char **argv)
   std::cout << "Time-OpenMP: " << std::endl;
   print_elapsed(start, end);
 
-  // print
-  // std::cout << data[N/2] << std::endl;
   std::cout << "Average: " << avg << std::endl;
   
   MPI_Init(&argc, &argv); /* Mandatory */
@@ -41,7 +39,6 @@ int main(int argc, char **argv)
   int np;                 /* number of processes */
   MPI_Comm_size(MPI_COMM_WORLD, &np);
   MPI_Comm_rank(MPI_COMM_WORLD, &pid);
-  int N = std::atoi(argv[1]);;
   double t0 = MPI_Wtime();
   int Nc = average_mpi(data, N, pid, np);
   comm(N, Nc, pid, np);
@@ -49,10 +46,7 @@ int main(int argc, char **argv)
   std::cout << "TIME: " << t1-t0 << std::endl;
   
   MPI_Finalize();
-  
-  
-  
-  
+ 
   delete [] data;
   return 0;
 }

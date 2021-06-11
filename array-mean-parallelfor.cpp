@@ -28,7 +28,7 @@ int main(int argc, char **argv)
   auto start = std::chrono::steady_clock::now();
   double avg = average_mp(data, N, NTH);
   auto end = std::chrono::steady_clock::now();
-  std::cout << "Time-OpenMP: \t" << ;
+  std::cout << "Time-OpenMP: \t";
   print_elapsed(start, end);
 
   std::cout << "Average: " << avg << std::endl;

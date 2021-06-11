@@ -14,7 +14,6 @@ void comm(int N, int Nc, int pid, int np);
 int main(int argc, char **argv)
 {
   int N = std::atoi(argv[1]);
-  int NTH = std::atoi(argv[2]);
   double * data = new double [N]; 
 
   fill(data, N, NTH);

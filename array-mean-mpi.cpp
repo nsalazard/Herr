@@ -5,7 +5,7 @@
 #include <omp.h>
 #include "mpi.h"
 
-void fill(double *data, int n, int pid, int np)
+void fill(double *data, int n, int pid, int np);
 int average_mpi(double *data, int N, int pid, int np);
 void comm(int N, int Nc, int pid, int np);
 

@@ -5,9 +5,7 @@
 #include <omp.h>
 #include "mpi.h"
 
-template <typename t1, typename t2>
-void print_elapsed(t1 start, t2 end );
-void fill(double * d, int n, int pid, int np)
+void fill(double *data, int n, int pid, int np)
 int average_mpi(double *data, int N, int pid, int np);
 void comm(int N, int Nc, int pid, int np);
 
@@ -35,13 +33,13 @@ int main(int argc, char **argv)
   return 0;
 }
 
-void fill(double * d, int n, int pid, int np)
+void fill(double *data, int N, int pid, int np)
 {  
   int num = N/np;  
   int imin = pid*num;
   int imax = (pid+1)*num;
     for (int ii = imin; ii < imax; ++ii) {
-     d[ii] = 2*std::sin(ii) + std::log(ii + 1);
+     data[ii] = 2*std::sin(ii) + std::log(ii + 1);
   }
 }
 
@@ -76,9 +74,3 @@ int average_mpi(double *data, int N, int pid, int np)
   return total;
 }
 
-template <typename t1, typename t2>
-void print_elapsed(t1 start, t2 end )
-{
-  std::cout.precision(6); std::cout.setf(std::ios::scientific);
-  std::cout << std::chrono::duration_cast<std::chrono::milliseconds>(end-start).count()/1000.0 << "\n";
-}

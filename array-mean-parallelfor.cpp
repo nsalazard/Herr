@@ -28,7 +28,7 @@ int main(int argc, char **argv)
   auto start = std::chrono::steady_clock::now();
   double avg = average_mp(data, N, NTH);
   auto end = std::chrono::steady_clock::now();
-  std::cout << "Time-OpenMP: " << std::endl;
+  std::cout << "Time-OpenMP: \t" << ;
   print_elapsed(start, end);
 
   std::cout << "Average: " << avg << std::endl;
@@ -43,7 +43,7 @@ int main(int argc, char **argv)
   int Nc = average_mpi(data, N, pid, np);
   comm(N, Nc, pid, np);
   double t1 = MPI_Wtime();
-  std::cout << "TIME: " << t1-t0 << std::endl;
+  std::cout << "TIME Open-MPI: " << t1-t0 << std::endl;
   
   MPI_Finalize();
  

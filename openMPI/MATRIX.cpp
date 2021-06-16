@@ -4,10 +4,11 @@
 #include <vector>
 #include "mpi.h"
 
+typedef std::vector<double> VEC;
+
 void fill(int nsize, int pid, int np);
-void print1(const vec & data, int nx, int ny);
-void print2(const vec & data, int nx, int ny, int pid, int np);
-typedef std::vector<double> vec;
+void print1(const VEC & data, int nx, int ny);
+void print2(const VEC & data, int nx, int ny, int pid, int np);
 
 int main(int argc, char **argv)
 {
@@ -39,7 +40,7 @@ void fill(int nsize, int pid, int np)
 
   int Nlocal = nsize/np;
   int Ntotal = Nlocal * nsize;
-  vec data(Ntotal);
+  VEC data(Ntotal);
 
   // falta inicializar el arreglo!
   for (int ii = 0; ii < Ntotal; ++ii) {
@@ -54,7 +55,7 @@ void fill(int nsize, int pid, int np)
 
 }
 
-void print1(const vec & data, int nx, int ny)
+void print1(const VEC & data, int nx, int ny)
 {
     for(int ix = 0; ix < nx; ++ix) {
         for(int iy = 0; iy < ny; ++iy) {
@@ -65,12 +66,12 @@ void print1(const vec & data, int nx, int ny)
     std::cout << "\n";
 }
 
-void print2(const vec & data, int nx, int ny, int pid, int np)
+void print2(const VEC & data, int nx, int ny, int pid, int np)
 {
     int tag = 0;
     if (0 == pid) {
         print1(data, nx, ny);
-        vec dat(nx*ny);
+        VEC dat(nx*ny);
         for (int src = 1; src < np; ++src) {
             MPI_Recv(&dat[0], nx*ny, MPI_DOUBLE, src, tag, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
             print1(dat, nx, ny);

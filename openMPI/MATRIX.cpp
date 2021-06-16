@@ -20,12 +20,7 @@ int main(int argc, char **argv)
   MPI_Comm_size(MPI_COMM_WORLD, &np);
   MPI_Comm_rank(MPI_COMM_WORLD, &pid);
 
-  int NSIZE = std::atoi(argv[1]);
-  double start = 0; 
-
-  if (0 == pid) {
-    std::cout << "Comm time: " << end-start << "\n";
-  }
+  int NSIZE = std::atoi(argv[1]); 
   
   fill(NSIZE, pid, np);
 
@@ -51,7 +46,7 @@ void fill(int nsize, int pid, int np)
     data[ii] = 1;
   }
   
- print2(data,nsize,nlocal,pid,np);
+ print2(data,nsize,Nlocal,pid,np);
 
 }
 

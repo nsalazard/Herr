@@ -61,18 +61,18 @@ void print1(const VEC & data, int nx, int ny)
 
 void print2(const VEC & data, int nx, int ny, int pid, int np)
 {
-    int tag1 = 0, tag2 = 1;
+    int tag = 0;
     if (0 == pid) {
         print1(data, nx, ny);
         VEC dat(nx*ny);
         MPI_Barrier(MPI_COMM_WORLD);
         for (int src = 1; src < np; ++src) {
-            MPI_Recv(&dat[0], nx*ny, MPI_DOUBLE, src, tag1, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+            MPI_Recv(&dat[0], nx*ny, MPI_DOUBLE, src, tag, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
             print1(dat, nx, ny);
             MPI_Barrier(MPI_COMM_WORLD);
         }
     } else {
         int dest = 0;
-        MPI_Send(&data[0], nx*ny, MPI_DOUBLE, dest, tag2, MPI_COMM_WORLD);
+        MPI_Send(&data[0], nx*ny, MPI_DOUBLE, dest, tag, MPI_COMM_WORLD);
     }
 }

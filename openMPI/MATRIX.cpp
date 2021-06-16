@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <cmath>
+#include <vector>
 #include "mpi.h"
 
 void fill(int nsize, int pid, int np);
@@ -70,7 +71,7 @@ void print2(const data_t & data, int nx, int ny, int pid, int np)
         std::vector<double> dat(nx*ny);
         for (int src = 1; src < np; ++src) {
             MPI_Recv(&dat[0], nx*ny, MPI_DOUBLE, src, tag, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-            print_screen(dat, nx, ny);
+            print1(dat, nx, ny);
         }
     } else {
         int dest = 0;

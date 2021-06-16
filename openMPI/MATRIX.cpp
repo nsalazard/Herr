@@ -5,6 +5,8 @@
 #include "mpi.h"
 
 void fill(int nsize, int pid, int np);
+void print1(const vec & data, int nx, int ny);
+void print2(const vec & data, int nx, int ny, int pid, int np);
 typedef std::vector<double> vec;
 
 int main(int argc, char **argv)

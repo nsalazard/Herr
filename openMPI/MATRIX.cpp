@@ -12,6 +12,7 @@ void print2(const VEC & data, int nx, int ny, int pid, int np);
 
 int main(int argc, char **argv)
 {
+  int NSIZE = std::atoi(argv[1]); 
   MPI_Init(&argc, &argv); /* Mandatory */
 
   int pid;                 /* rank of process */
@@ -19,8 +20,6 @@ int main(int argc, char **argv)
 
   MPI_Comm_size(MPI_COMM_WORLD, &np);
   MPI_Comm_rank(MPI_COMM_WORLD, &pid);
-
-  int NSIZE = std::atoi(argv[1]); 
   
   fill(NSIZE, pid, np);
 
@@ -66,9 +65,9 @@ void print2(const VEC & data, int nx, int ny, int pid, int np)
     int tag = 0;
     if (0 == pid) {
         print1(data, nx, ny);
-        VEC dat(nx*ny); 
+        VEC dt(nx*ny); 
         for (int src = 1; src < np; ++src) {
-            MPI_Recv(&dat[0], nx*ny, MPI_DOUBLE, src, tag, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+            MPI_Recv(&dt[0], nx*ny, MPI_DOUBLE, src, tag, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
             print1(dat, nx, ny);
         }
     } else {

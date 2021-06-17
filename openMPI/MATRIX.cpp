@@ -40,7 +40,7 @@ void fill(int nsize, int pid, int np)
     data[ii] = 0;
   }
 
-  for (int ii = Nlocal*pid; ii < Ntotal; ii += nsize+1) {
+  for (int ii = Nlocal*pid; ii < Ntotal; ii += 11) {   //Danger
     data[ii] = 1.0;
   }
   

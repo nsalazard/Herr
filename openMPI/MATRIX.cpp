@@ -68,7 +68,7 @@ void print2(const VEC & data, int nx, int ny, int pid, int np)
         VEC dt(nx*ny); 
         for (int src = 1; src < np; ++src) {
             MPI_Recv(&dt[0], nx*ny, MPI_DOUBLE, src, tag, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-            print1(dat, nx, ny);
+            print1(dt, nx, ny);
         }
     } else {
         int dest = 0;

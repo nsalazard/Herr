@@ -45,7 +45,7 @@ void fill(int nsize, int pid, int np)
   }
   
 
-   print2(data,Nlocal, nsize,src,np);
+   print2(data,Nlocal, nsize,pid,np);
   
 
 }

@@ -35,7 +35,7 @@ int main(int argc, char **argv)
   for (int ii = 0; ii < Ntotal; ii += NSIZE+1) {  
     int iy = pid*Nlocal + ii;
     int ix = ii;
-    data[ix*N + iy] = 1.0;
+    data[ix*NSIZE + iy] = 1.0;
   }
 
   int tag = 0;

@@ -33,8 +33,8 @@ int main(int argc, char **argv)
     data[ii] = 1.0;
   }
 
-  nx = Nlocal;
-  ny = NSIZE;
+  int nx = Nlocal;
+  int ny = NSIZE;
 
   int tag = 0;
     if (0 == pid) {

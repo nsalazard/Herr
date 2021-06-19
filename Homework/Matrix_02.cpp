@@ -32,7 +32,7 @@ int main(int argc, char **argv)
     data[ii] = 0;
   }
 
-  for (int ii = 0; ii < Ntotal; ii += NSIZE+1) {  
+  for (int ii = 0; ii < Nlocal; ii += NSIZE+1) {  
     int iy = pid*Nlocal + ii;
     int ix = ii;
     data[ix*NSIZE + iy] = 1.0;
@@ -41,10 +41,10 @@ int main(int argc, char **argv)
   int tag = 0;
     if (0 == pid) {
         print1(data, nx, ny);
-        VEC copy(nx * ny);
+        //VEC copy(nx * ny);
         for (int src = 1; src < np; ++src) {
-            MPI_Recv(&copy[0], nx*ny, MPI_DOUBLE, src, tag, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-            print1(copy, nx, ny);
+            MPI_Recv(&data[0], nx*ny, MPI_DOUBLE, src, tag, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+            print1(data, nx, ny);
         }
     } else {
         int dest = 0;

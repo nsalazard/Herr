@@ -53,7 +53,7 @@ void print1(const VEC & data, int nx, int ny)
 {
     for(int ix = 0; ix < nx; ++ix) {
         for(int iy = 0; iy < ny; ++iy) {
-            std::cout << data[ix*nx + iy] << "  ";
+            std::cout << data[ix*ny + iy] << "  ";
         }
         std::cout << "\n";
     }

@@ -32,7 +32,7 @@ int main(int argc, char **argv)
     data[ii] = 0;
   }
 
-  for (int ii = 0; ii < Nlocal; ii += NSIZE+1) {  
+  for (int ii = 0; ii < Nlocal; ++ii) {  
     int iy = pid*Nlocal + ii;
     int ix = ii;
     data[ix*NSIZE + iy] = 1.0;

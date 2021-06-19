@@ -23,26 +23,27 @@ int main(int argc, char **argv)
   int Nlocal = NSIZE/np;
   int Ntotal = Nlocal * NSIZE;
   VEC data(Ntotal);
+  
+  int nx = Nlocal;
+  int ny = NSIZE;
 
   // falta inicializar el arreglo!
   for (int ii = 0; ii < Ntotal; ++ii) {
     data[ii] = 0;
   }
 
-  for (int ii = Nlocal*pid; ii < Ntotal; ii += NSIZE+1) {  
-    data[ii] = 1.0;
+  for (int ii = 0; ii < Ntotal; ii += NSIZE+1) {  
+    int iy = pid*Nlocal + ii;
+    int ix = ii;
+    data[ix¨N + iy] = 1.0;
   }
-
-  int nx = Nlocal;
-  int ny = NSIZE;
 
   int tag = 0;
     if (0 == pid) {
         print1(data, nx, ny);
-        VEC dt(nx*ny); 
         for (int src = 1; src < np; ++src) {
-            MPI_Recv(&dt[0], nx*ny, MPI_DOUBLE, src, tag, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-            print1(dt, nx, ny);
+            MPI_Recv(&data[0], nx*ny, MPI_DOUBLE, src, tag, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+            print1(data, nx, ny);
         }
     } else {
         int dest = 0;
